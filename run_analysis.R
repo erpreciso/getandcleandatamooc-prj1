@@ -1,23 +1,37 @@
-## Coursera - Getting and Cleaning Data - assignment 1
+# Coursera - Getting and Cleaning Data - assignment 1 -
+#
+# run_analysis.R SCRIPT
+#
+#
+# Directory structure
+#
+# ~ working directory
+# |__ UCI HAR Dataset (folder)
+# |  |__ activity_labels.txt
+# |  |__ features.txt
+# |  |__ features_info.txt
+# |  |__ README.txt
+# |  |  
+# |  |__ test (folder)
+# |  |  |__ subject_test.txt
+# |  |  |__ X_test.txt
+# |  |  |__ y_test.txt
+# |  |  |__ Inertial Signals (folder)
+# |  |     |__ -- raw data from signal sensors --
+# |  |
+# |  |__ train (folder)
+# |     |__ subject_train.txt
+# |     |__ X_train.txt
+# |     |__ y_train.txt
+# |     |__ Inertial Signals (folder)
+# |        |__ -- raw data from signal sensors --
+# |   
+# |
+# |__  script (folder)
+#     |_ run_analysis.R
+#     |_ codebook.md
 
-## Directory structure
-##  ~ working directory
-##   |__ UCI HAR Dataset (folder)
-##   |  |__ ** dataset readme files
-##   |  |__ test
-##   |     |_ ** test dataset files
-##   |  |__ train
-##   |     |_ ** train dataset files
-##   |
-##   |__ script (folder)
-##      |_ run_analysis.R
-##      |_ codebook.md
-
-
-# Set working directory
-setwd("/home/erpreciso/Documents/school/getcleandata-prj1")
-
-# Load column labels
+# Load variable names
 featureTable <- read.table("UCI HAR Dataset/features.txt", stringsAsFactors=FALSE)
 allColumnNames <- featureTable[,2]
 
@@ -79,3 +93,6 @@ aggregation <- aggregate(totalObservations, by=aggregationLevels, mean, na.rm=TR
 # Remove redundant variables
 aggregation$activityLabel <-NULL
 aggregation$subjectCode <- NULL
+
+# Write in output file
+write.table(aggregation, file="aggregation.txt", row.name=FALSE)
