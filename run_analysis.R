@@ -1,6 +1,20 @@
 ## Coursera - Getting and Cleaning Data - assignment 1
 
-# Set working directory to the exercise container
+## Directory structure
+##  ~ working directory
+##   |__ UCI HAR Dataset (folder)
+##   |  |__ ** dataset readme files
+##   |  |__ test
+##   |     |_ ** test dataset files
+##   |  |__ train
+##   |     |_ ** train dataset files
+##   |
+##   |__ script (folder)
+##      |_ run_analysis.R
+##      |_ codebook.md
+
+
+# Set working directory
 setwd("/home/erpreciso/Documents/school/getcleandata-prj1")
 
 # Load column labels
