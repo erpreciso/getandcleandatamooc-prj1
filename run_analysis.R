@@ -35,9 +35,12 @@
 featureTable <- read.table("UCI HAR Dataset/features.txt", stringsAsFactors=FALSE)
 allColumnNames <- featureTable[,2]
 
+# Clean variable names
+allColumnNames <- gsub("\\(\\)", "", allColumnNames)
+
 # Filter for substrings mean and std.
-meanColumns <- grepl("mean()", allColumnNames, fixed = TRUE)
-stdColumns <- grepl("std()", allColumnNames, fixed = TRUE)
+meanColumns <- grepl("mean", allColumnNames, fixed = TRUE)
+stdColumns <- grepl("std", allColumnNames, fixed = TRUE)
 
 # Create a vector with only relevant column names for the exercise
 relevantColumnNames <- subset(allColumnNames, meanColumns | stdColumns)
